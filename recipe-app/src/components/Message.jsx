@@ -1,7 +1,7 @@
-const Message = () => {
+const Message = ({ message }) => {
   return (
     <div>
-      <h1>MESSAGE</h1>
+      <h1>{message}</h1>
     </div>
   )
 }

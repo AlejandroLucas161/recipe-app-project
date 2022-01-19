@@ -3,6 +3,7 @@ import Recipe from './components/Recipe';
 import './App.css';
 import Message from './components/Message';
 import spinner from './assets/images/spinner.svg'
+import Results from './components/Results';
 
 const App = () => {
   const APP_ID = 'fc7202c8';
@@ -46,26 +47,11 @@ const App = () => {
         </button>
       </form>  
 
-      {loading ? (<img src={spinner} />) : null}
-
-      {query
-        ?
-        (<div className='recipes'>
-          {recipes.map(recipe => (
-            <Recipe 
-              key={recipe.recipe.label} 
-              title={recipe.recipe.label} 
-              calories={recipe.recipe.calories} 
-              image={recipe.recipe.image}
-              ingredients={recipe.recipe.ingredients}
-            />
-          ))}
-        </div>)
-        :
-        (
-          <Message />
-        )
-      }
+      {loading ? (
+        <img src={spinner} />
+      ) : (
+        <Results query={query} recipes={recipes} />
+      )}      
     </div>
   );
 };
