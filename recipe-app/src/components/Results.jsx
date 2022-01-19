@@ -1,5 +1,5 @@
 import Message from "./Message"
-import Recipe from "./Recipe"
+import RecipePreview from "./RecipePreview"
 
 const Results = ({ query, recipes }) => {
   return (
@@ -7,12 +7,12 @@ const Results = ({ query, recipes }) => {
       {recipes.length ? (
         <div className='recipes'>
           {recipes.map(({ recipe }) => (
-            <Recipe 
-              key={recipe.label} 
+            <RecipePreview 
+              key={recipe.label}    
               title={recipe.label} 
               calories={recipe.calories} 
               image={recipe.image}
-              ingredients={recipe.ingredients}
+              source={recipe.source}
             />
           ))}
         </div>
