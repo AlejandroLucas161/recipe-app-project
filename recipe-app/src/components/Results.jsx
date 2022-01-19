@@ -1,21 +1,27 @@
+import { Fragment } from "react"
+
 import Message from "./Message"
 import RecipePreview from "./RecipePreview"
 
 const Results = ({ query, recipes }) => {
   return (
-    <div>
-      {recipes.length ? (
+    <div>    
+    {recipes.length ? (
+      <Fragment>
+        <h2>These are the results for your search: {query}</h2>
+        
         <div className='recipes'>
-          {recipes.map(({ recipe }) => (
-            <RecipePreview 
-              key={recipe.label}    
-              title={recipe.label} 
-              calories={recipe.calories} 
-              image={recipe.image}
-              source={recipe.source}
-            />
-          ))}
-        </div>
+            {recipes.map(({ recipe }) => (
+              <RecipePreview 
+                key={recipe.label}    
+                title={recipe.label} 
+                calories={recipe.calories} 
+                image={recipe.image}
+                source={recipe.source}
+              />
+            ))}
+          </div>
+        </Fragment>
       ) : (
         <Message message={query ? 'No recipes found, try other ingredient' : 'Start looking for recipes'} />
       )}
