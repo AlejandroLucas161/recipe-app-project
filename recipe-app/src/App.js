@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import Recipe from './components/Recipe';
-import './App.css';
-import Message from './components/Message';
-import spinner from './assets/images/spinner.svg'
+
 import Results from './components/Results';
 
-const App = () => {
+import recipesMock from './data/recipesMock.json'
+import spinner from './assets/images/spinner.svg'
+import './App.css';
+
+const App = ({ useMockedData }) => {
   const APP_ID = 'fc7202c8';
   const APP_KEY = '47b3515d11c8978e64392707a6a5411f';	
 
@@ -15,13 +16,22 @@ const App = () => {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    getRecipes();
+    if(query) {
+      getRecipes();
+    }    
   }, [query])
 
   const getRecipes = async () => {
     setLoading(true);
-    const response = await fetch(`https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`);
-    const data = await response.json();
+    let data;
+
+    if(useMockedData) {
+      data = recipesMock;
+    } else {
+      const response = await fetch(`https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`);
+      data = await response.json();
+    }
+    
     console.log(data.hits);
     setRecipes(data.hits);
     setLoading(false);
@@ -33,8 +43,8 @@ const App = () => {
 
   const getSearch = (e) => {
     e.preventDefault();
-    setQuery(search)
-    setSearch('')
+    setQuery(search);
+    setSearch('');
   }
 
   return (
