@@ -1,33 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Open+Sans+Condensed:wght@300&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
 .App {
   min-height: 100vh;
-  padding: 50px 100px;
-  background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+  background-color: #eff7e2;
 }
 
 .search-form {
-  min-height: 10vh;
+  width: 100%;
+  position: relative;
+
+  min-height: 10vh;  
+  padding: 80px;
+}
+
+.search-form::before {
+  content: "";
+  background-image: url('./assets/images/banner-image.jpg');
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.80;
+}
+
+.search-form-content {
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding-bottom: 50px;
+  align-items: center;  
+  z-index: 999;
+  position: relative;
 }
 
 .search-bar {
   width: 50%;
   border: none;
   padding: 10px;
+  height: 40px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
 }
 
 .search-btn {
-  background-color: #60bf83;
+  font-size: 16px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+
+  background-color: #95CD41;
   border: none;
-  padding: 10px 20px;
+  padding: 0 20px;
+  height: 40px;
   color:  white;  
 }
 

@@ -11,13 +11,14 @@ const Results = ({ query, recipes }) => {
         <h2>These are the results for your search: {query}</h2>
         
         <div className='recipes'>
-            {recipes.map(({ recipe }) => (
+            {recipes.map((recipe) => (
               <RecipePreview 
                 key={recipe.label}    
                 title={recipe.label} 
                 calories={recipe.calories} 
                 image={recipe.image}
                 source={recipe.source}
+                id={recipe.id}
               />
             ))}
           </div>

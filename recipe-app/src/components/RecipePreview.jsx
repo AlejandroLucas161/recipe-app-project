@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import style from './recipe.module.css'
 
-const RecipePreview = ({ title, calories, image, source }) => {
+const RecipePreview = ({ title, calories, image, source, id }) => {
   return(
-    <div className={style.recipe}>
+    <Link to={`/details/${id}`} className={style.recipe}>
       <h1>{title}</h1>
       
       <p>{calories}</p>
@@ -12,7 +13,7 @@ const RecipePreview = ({ title, calories, image, source }) => {
       <p>From <b>{source}</b></p>
 
       <img className={style.image} src={image} />      
-    </div>
+    </Link>
   )
 }
 

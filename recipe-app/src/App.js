@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { Switch, Route, Link } from 'react-router-dom';
 
-import Results from './components/Results';
+import HomePage from './pages/HomePage';
+import RecipeDetails from './components/RecipeDetails';
 
 import recipesMock from './data/recipesMock.json'
-import spinner from './assets/images/spinner.svg'
 import './App.css';
 
 const App = ({ useMockedData }) => {
@@ -31,9 +32,9 @@ const App = ({ useMockedData }) => {
       const response = await fetch(`https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`);
       data = await response.json();
     }
-    
-    console.log(data.hits);
-    setRecipes(data.hits);
+
+    setRecipes(data.hits.map((hit, i) => ({...hit.recipe, id: i})));
+    console.log(data.hits.map((hit, i) => ({...hit.recipe, id: i})));
     setLoading(false);
   }
 
@@ -49,19 +50,22 @@ const App = ({ useMockedData }) => {
 
   return (
     <div className='App'>
-      <form onSubmit={getSearch} className='search-form'>
-        <input className='search-bar' type='text' value={search} onChange={updateSearch} />
+    <Switch>
+      <Route exact path='/'>
+        <HomePage
+          query={query}  
+          recipes={recipes} 
+          loading={loading}
+          search={search}
+          getSearch={getSearch}
+          updateSearch={updateSearch}
+        />
+      </Route>
 
-        <button className='search-btn' type='submit'>
-          Search
-        </button>
-      </form>  
-
-      {loading ? (
-        <img src={spinner} />
-      ) : (
-        <Results query={query} recipes={recipes} />
-      )}      
+      <Route path='/details/:id'>
+        <RecipeDetails recipes={recipes} />
+      </Route>
+    </Switch>
     </div>
   );
 };
