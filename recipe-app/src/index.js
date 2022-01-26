@@ -7,7 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App useMockedData/>
+      <App useMockedData={false}/>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

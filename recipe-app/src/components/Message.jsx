@@ -1,9 +1,11 @@
+import style from './message.module.css';
+
 const Message = ({ message }) => {
   return (
     <div>
-      <h1>{message}</h1>
+      <h1 className={style.message}>{message}</h1>
     </div>
   )
 }
 
-export default Message
+export default Message;

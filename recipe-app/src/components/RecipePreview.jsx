@@ -6,13 +6,13 @@ import style from './recipe.module.css'
 const RecipePreview = ({ title, calories, image, source, id }) => {
   return(
     <Link to={`/details/${id}`} className={style.recipe}>
+      <img className={style.image} src={image} />      
+
       <h1>{title}</h1>
       
-      <p>{calories}</p>
+      <p>Calories: <b>{Math.round(calories)}</b></p>
     
-      <p>From <b>{source}</b></p>
-
-      <img className={style.image} src={image} />      
+      <p>From: <b>{source}</b></p>
     </Link>
   )
 }

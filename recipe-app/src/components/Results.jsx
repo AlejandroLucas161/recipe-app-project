@@ -3,12 +3,15 @@ import { Fragment } from "react"
 import Message from "./Message"
 import RecipePreview from "./RecipePreview"
 
+import style from './message.module.css';
+
+
 const Results = ({ query, recipes }) => {
   return (
     <div>    
     {recipes.length ? (
       <Fragment>
-        <h2>These are the results for your search: {query}</h2>
+        <h2 className={style.message}>These are the results for your search: <b>{query}</b></h2>
         
         <div className='recipes'>
             {recipes.map((recipe) => (
