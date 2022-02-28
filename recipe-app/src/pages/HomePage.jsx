@@ -12,7 +12,7 @@ const HomePage = ({ query, recipes, loading, search, getSearch, updateSearch }) 
         <div className="search-form-content">
           <input className="search-bar" type="text" value={search} onChange={updateSearch} />
 
-          <button className="search-btn" type="submit">
+          <button className="search-btn" type="submit" disabled={!search}>
             Search
           </button>
         </div>

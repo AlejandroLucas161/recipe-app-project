@@ -48,10 +48,12 @@ body {
   align-items: center;  
   z-index: 999;
   position: relative;
+  max-width: 760px;
+  margin: 0 auto;
 }
 
 .search-bar {
-  width: 50%;
+  flex-grow: 1;
   border: none;
   padding: 10px;
   height: 40px;
@@ -72,12 +74,36 @@ body {
 }
 
 .recipes {
+  border: 2px solid purple;
+
   padding: 20px; /* Add spacing around recipes container for small viewports */
   max-width: 1280px; /* Limit recipes width so content looks better on large viewports */
+  width: 100%;
   margin: 0 auto; /* Center recipes on large viewports */
 
   display: flex;
   justify-content: center;
   flex-flow: row wrap;
   align-items: center;
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 1200px) {
+  .recipes, .search-form {
+    padding: 35px;
+  }
+
+}
+
+@media (max-width: 992px) {
+  .recipes, .search-form {
+    padding: 45px;
+  }
+}
+
+@media (max-width: 768px) {
+  .recipes, .search-form {
+    padding: 55px;
+  }
 }

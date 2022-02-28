@@ -8,11 +8,19 @@ const RecipePreview = ({ title, calories, image, source, id }) => {
     <Link to={`/details/${id}`} className={style.recipe}>
       <img className={style.image} src={image} />      
 
-      <h1>{title}</h1>
+      <div>
+        <h1>{title}</h1>
+      </div>
+
+      <div>
+        <p>Calories: <b>{Math.round(calories)}</b></p>
+      </div>
       
-      <p>Calories: <b>{Math.round(calories)}</b></p>
+      <div>
+        <p>From: <b>{source}</b></p>
+      </div>
+      
     
-      <p>From: <b>{source}</b></p>
     </Link>
   )
 }
