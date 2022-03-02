@@ -74,8 +74,6 @@ body {
 }
 
 .recipes {
-  border: 2px solid purple;
-
   padding: 20px; /* Add spacing around recipes container for small viewports */
   max-width: 1280px; /* Limit recipes width so content looks better on large viewports */
   width: 100%;
@@ -107,3 +105,22 @@ body {
     padding: 55px;
   }
 }
+
+@media (max-width: 576px) {
+  .recipes, .search-form {
+    padding: 40px 60px;
+  }
+}
+
+@media (max-width: 455px) {
+  .recipes, .search-form {
+    padding: 20px 40px;
+  }
+}
+
+@media (max-width: 375px) {
+  .search-btn {
+    font-size: 14px;
+  }
+}
+

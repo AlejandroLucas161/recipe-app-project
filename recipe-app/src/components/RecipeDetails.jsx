@@ -12,22 +12,29 @@ const RecipeDetails = ({ recipes }) => {
 
   console.log(recipe);
   return(
-    <div className={style.details_container}>
+    <div className={style.container}>
       <Link exact to='/'>
         <img className={style.arrow} src={arrow}/>
       </Link>
-
-      <div className={style.details}>
-        <img src={recipe.image} />      
-        <h1>{recipe.label}</h1>
-        <ul className={style.ingredients}>
-        {ingredients.map(ingredient => (
-          <li>{ingredient.text}</li>
-          ))}
-        </ul>
-        <p>Diet: <b>{recipe.dietLabels}</b></p>
-        <p>Meal type: <b>{recipe.mealType}</b></p>
-        <p>More details: <b><a href={recipe.url} target='_blank'>{recipe.source}</a></b></p>
+      <div className={style.detailsContainer}>
+        <div className={style.details}>
+          <div className={style.detailsContent}>
+            <div className={style.imageContainer}>
+              <img src={recipe.image} />      
+            </div>
+            <div className={style.ingredientsContainer}>
+              <h1>{recipe.label}</h1>
+              <ul className={style.ingredients}>
+                {ingredients.map(ingredient => (
+                  <li>{ingredient.text}</li>
+                ))}
+              </ul>
+              {recipe.dietLabels.length > 0 && <p>Diet: <b>{recipe.dietLabels}</b></p>}
+              <p>Meal type: <b>{recipe.mealType}</b></p>
+              <p>More details: <b><a href={recipe.url} target='_blank'>{recipe.source}</a></b></p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )
